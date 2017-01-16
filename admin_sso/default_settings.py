@@ -6,9 +6,9 @@ ASSIGNMENT_ANY = 0
 ASSIGNMENT_MATCH = 1
 ASSIGNMENT_EXCEPT = 2
 ASSIGNMENT_CHOICES = (
-    (ASSIGNMENT_ANY, _('any')),
-    (ASSIGNMENT_MATCH, _("matches")),
-    (ASSIGNMENT_EXCEPT, _("don't match")),
+    (ASSIGNMENT_ANY, _('Any account from the domain')),
+    (ASSIGNMENT_MATCH, _("Only an account that matches a specific username")),
+    (ASSIGNMENT_EXCEPT, _("All accounts that don't match a specific username")),
 )
 
 DJANGO_ADMIN_SSO_ADD_LOGIN_BUTTON = getattr(
