@@ -11,7 +11,7 @@ class DjangoSSOAuthBackend(object):
         except cls.DoesNotExist:
             return None
 
-    def authenticate(self, request=None, **kwargs):
+    def authenticate(self, request, **kwargs):
         sso_email = kwargs.pop("sso_email", None)
 
         assignment = Assignment.objects.for_email(sso_email)
