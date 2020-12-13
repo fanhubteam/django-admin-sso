@@ -55,7 +55,7 @@ def end(request):
 
     if credentials.id_token["email_verified"]:
         email = credentials.id_token["email"]
-        user = authenticate(sso_email=email)
+        user = authenticate(request, sso_email=email)
         if user and user.is_active:
             login(request, user)
             return HttpResponseRedirect(reverse("admin:index"))

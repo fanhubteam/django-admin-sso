@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from django.test import TestCase
+from django.test import RequestFactory, TestCase
 
 from admin_sso import settings
 from admin_sso.auth import DjangoSSOAuthBackend
@@ -20,18 +20,21 @@ class AuthModuleTests(TestCase):
             user=self.user,
             weight=100,
         )
+        self.request_factory = RequestFactory()
 
     def tearDown(self):
         self.user.delete()
         Assignment.objects.all().delete()
 
     def test_empty_authenticate(self):
-        user = self.auth_module.authenticate()
+        request = self.request_factory.get('/')
+        user = self.auth_module.authenticate(request)
         self.assertEqual(user, None)
 
     def test_simple_assignment(self):
         email = "foo@example.com"
-        user = self.auth_module.authenticate(sso_email=email)
+        request = self.request_factory.get('/')
+        user = self.auth_module.authenticate(request, sso_email=email)
         self.assertEqual(user, self.user)
 
     def test_get_user(self):
