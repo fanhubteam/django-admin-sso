@@ -27,13 +27,13 @@ class AuthModuleTests(TestCase):
         Assignment.objects.all().delete()
 
     def test_empty_authenticate(self):
-        request = self.request_factory.get('/')
+        request = self.request_factory.get("/")
         user = self.auth_module.authenticate(request)
         self.assertEqual(user, None)
 
     def test_simple_assignment(self):
         email = "foo@example.com"
-        request = self.request_factory.get('/')
+        request = self.request_factory.get("/")
         user = self.auth_module.authenticate(request, sso_email=email)
         self.assertEqual(user, self.user)
 
