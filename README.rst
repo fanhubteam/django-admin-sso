@@ -2,9 +2,6 @@
 Django admin SSO
 ================
 
-.. image:: https://travis-ci.org/matthiask/django-admin-sso.png?branch=master
-    :target: https://travis-ci.org/matthiask/django-admin-sso
-
 Django admin SSO lets users login to Django's administration panel using an
 OAuth2 provider instead of a username/password combination.
 
