@@ -9,13 +9,13 @@ from admin_sso import settings
 User = get_user_model()
 
 
-class CredentialsMock(object):
+class CredentialsMock:
     def __init__(self, **kwargs):
         for key, value in kwargs.items():
             setattr(self, key, value)
 
 
-class FlowMock(object):
+class FlowMock:
     """
     object to mock a flow and return all arguments given to __init__
     when calling step2_exchange

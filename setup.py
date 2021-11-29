@@ -27,8 +27,9 @@ setup(
         "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
     ],
     install_requires=(
-        "Django>=1.11",
+        "Django>=2.2",
         "oauth2client>=1.2",
     ),
+    python_requires=">=3.6",
     include_package_data=True,
 )

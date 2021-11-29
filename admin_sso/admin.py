@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.urls import path
 from django.contrib import admin
 
 from admin_sso import settings
@@ -14,9 +14,9 @@ class AssignmentAdmin(admin.ModelAdmin):
 
         info = (self.model._meta.app_label, self.model._meta.model_name)
         return [
-            url(r"^start/$", start, name="%s_%s_start" % info),
-            url(r"^end/$", end, name="%s_%s_end" % info),
-        ] + super(AssignmentAdmin, self).get_urls()
+            path("start/", start, name="%s_%s_start" % info),
+            path("end/", end, name="%s_%s_end" % info),
+        ] + super().get_urls()
 
 
 admin.site.register(Assignment, AssignmentAdmin)

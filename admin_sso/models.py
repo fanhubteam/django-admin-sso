@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import fnmatch
 
 from django.db import models
@@ -49,7 +47,7 @@ class Assignment(models.Model):
         verbose_name_plural = _("Assignments")
 
     def __str__(self):
-        return "%s(%s) @%s" % (
+        return "{}({}) @{}".format(
             dict(settings.ASSIGNMENT_CHOICES)[self.username_mode],
             self.username,
             self.domain,

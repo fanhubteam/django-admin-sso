@@ -16,7 +16,7 @@ else:
 
             self._wrapped = Settings(default_settings)
 
-    class Settings(object):
+    class Settings:
         def __init__(self, settings_module):
             for setting in dir(settings_module):
                 if setting == setting.upper():

@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from admin_sso.models import Assignment
 
 
-class DjangoSSOAuthBackend(object):
+class DjangoSSOAuthBackend:
     def get_user(self, user_id):
         cls = get_user_model()
         try:
