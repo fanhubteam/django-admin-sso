@@ -1,9 +1,9 @@
 from django.contrib.auth import get_user_model
-from django.test import TestCase, Client
+from django.test import Client, TestCase
 from django.urls import reverse
 
-from admin_sso.models import Assignment
 from admin_sso import settings
+from admin_sso.models import Assignment
 
 
 User = get_user_model()

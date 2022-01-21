@@ -1,10 +1,10 @@
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
-from oauth2client.client import OAuth2WebServerFlow, FlowExchangeError
+from oauth2client.client import FlowExchangeError, OAuth2WebServerFlow
 
 from admin_sso import settings
+
 
 flow_kwargs = {
     "client_id": settings.DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID,

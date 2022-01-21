@@ -1,8 +1,10 @@
 #! /usr/bin/env python
 import os
+
 from setuptools import setup
 
 import admin_sso
+
 
 setup(
     name="django-admin-sso",

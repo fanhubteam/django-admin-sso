@@ -6,6 +6,8 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+- Added pre-commit.
+
 
 `4.0`_ (2021-12-13)
 ~~~~~~~~~~~~~~~~~~~

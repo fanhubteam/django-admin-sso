@@ -1,5 +1,5 @@
-from django.urls import path
 from django.contrib import admin
+from django.urls import path
 
 from admin_sso import settings
 from admin_sso.models import Assignment
@@ -10,7 +10,7 @@ class AssignmentAdmin(admin.ModelAdmin):
     raw_id_fields = ["user"]
 
     def get_urls(self):
-        from admin_sso.views import start, end
+        from admin_sso.views import end, start
 
         info = (self.model._meta.app_label, self.model._meta.model_name)
         return [
