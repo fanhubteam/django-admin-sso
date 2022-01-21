@@ -1,7 +1,6 @@
 VERSION = (4, 0, 0)
 __version__ = ".".join(map(str, VERSION))
 
-default_app_config = "admin_sso.apps.AdminSSOConfig"
 
 # Do not use Django settings at module level as recommended
 try:
