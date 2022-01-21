@@ -6,6 +6,10 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+
+`5.0`_ (2022-01-21)
+~~~~~~~~~~~~~~~~~~~
+
 - Added pre-commit.
 - Raised the minimum requirements to Python >= 3.8, Django >= 3.2.
 
@@ -34,4 +38,5 @@ Change log
 .. _3.0: https://github.com/matthiask/django-admin-sso/commit/3.0
 .. _3.1: https://github.com/matthiask/django-admin-sso/compare/3.0...3.1
 .. _4.0: https://github.com/matthiask/django-admin-sso/compare/3.1...4.0
-.. _Next version: https://github.com/matthiask/django-admin-sso/compare/4.0...main
+.. _5.0: https://github.com/matthiask/django-admin-sso/compare/4.0...5.0
+.. _Next version: https://github.com/matthiask/django-admin-sso/compare/5.0...main
