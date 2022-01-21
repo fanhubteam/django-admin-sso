@@ -7,6 +7,7 @@ Change log
 ~~~~~~~~~~~~~~~
 
 - Added pre-commit.
+- Raised the minimum requirements to Python >= 3.8, Django >= 3.2.
 
 
 `4.0`_ (2021-12-13)
