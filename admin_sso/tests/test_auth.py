@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.test import RequestFactory, TestCase
+from django.contrib.auth.models import Group
 
 from admin_sso import settings
 from admin_sso.auth import DjangoSSOAuthBackend
@@ -36,6 +37,43 @@ class AuthModuleTests(TestCase):
         request = self.request_factory.get("/")
         user = self.auth_module.authenticate(request, sso_email=email)
         self.assertEqual(user, self.user)
+
+    def test_assignment_without_user(self):
+        self.assignment1.user = None
+        self.assignment1.save()
+        email = "foo@example.com"
+        user = self.auth_module.authenticate(sso_email=email)
+        self.assertIsNone(user)
+
+    def test_assignment_without_user_create_user(self):
+        self.assignment1.create_user = True
+        self.assignment1.user = None
+        self.assignment1.save()
+        email = "foo@example.com"
+        user = self.auth_module.authenticate(sso_email=email)
+        self.assertEqual(user.username, email.split('@')[0])
+        self.assertFalse(user.is_superuser)
+
+    def test_assignment_without_user_create_superuser(self):
+        self.assignment1.create_user = True
+        self.assignment1.make_superuser = True
+        self.assignment1.user = None
+        self.assignment1.save()
+        email = "foo@example.com"
+        user = self.auth_module.authenticate(sso_email=email)
+        self.assertEqual(user.username, email.split('@')[0])
+        self.assertTrue(user.is_superuser)
+
+    def test_assignment_without_user_create_user_add_groups(self):
+        self.assignment1.create_user = True
+        self.assignment1.groups.add(
+            Group.objects.get_or_create(name='staff')[0]
+        )
+        self.assignment1.user = None
+        self.assignment1.save()
+        email = "foo@example.com"
+        user = self.auth_module.authenticate(sso_email=email)
+        self.assertTrue(user.groups.filter(name='staff').exists())
 
     def test_get_user(self):
         user = self.auth_module.get_user(self.user.id)

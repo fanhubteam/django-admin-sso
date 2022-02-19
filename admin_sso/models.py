@@ -1,5 +1,6 @@
 import fnmatch
 
+from django.contrib.auth.models import Group
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -32,13 +33,44 @@ class AssignmentManager(models.Manager):
 
 
 class Assignment(models.Model):
-    username_mode = models.IntegerField(choices=settings.ASSIGNMENT_CHOICES)
-    username = models.CharField(max_length=255, blank=True)
-    domain = models.CharField(max_length=255)
+    username_mode = models.IntegerField(
+        choices=settings.ASSIGNMENT_CHOICES,
+        help_text=_(
+            'Defines which mode/rule will be used to allow accounts '
+            'to login.')
+    )
+    username = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text=_('Example: john')
+    )
+    domain = models.CharField(
+        max_length=255,
+        help_text=_('A domain with Oauth support. Example: mywebsite.com')
+    )
     copy = models.BooleanField(default=False)
     weight = models.PositiveIntegerField(default=0)
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.CASCADE
+        settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.CASCADE,
+    )
+
+    create_user = models.BooleanField(
+        default=False,
+        help_text=_(
+            'Create a user upon first login for every account. '
+            'Subsequent logins are done matching account\'s email address.'
+        )
+    )
+    make_superuser = models.BooleanField(
+        default=False,
+        help_text=_('Whether the created user(s) should be superusers or not.')
+    )
+    groups = models.ManyToManyField(
+        Group,
+        blank=True,
+        help_text=_(
+            'List of groups that users should be added to on account creation.'
+        )
     )
 
     class Meta:
