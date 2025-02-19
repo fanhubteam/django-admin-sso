@@ -28,8 +28,7 @@ class AssignmentAdmin(admin.ModelAdmin):
         ] + super().get_urls()
 
 
-if settings.DJANGO_ADMIN_SSO_ASSIGNMENT_ADMIN_ACTIVE:
-    admin.site.register(Assignment, AssignmentAdmin)
+admin.site.register(Assignment, AssignmentAdmin)
 
 
 if settings.DJANGO_ADMIN_SSO_ADD_LOGIN_BUTTON:
