@@ -1,0 +1,17 @@
+[
+    {
+        "model": "admin_sso.assignment",
+        "pk": 1,
+        "fields": {
+            "username_mode": 0,
+            "username": "",
+            "domain": "quatrodois.com.br",
+            "copy": false,
+            "weight": 0,
+            "user": null,
+            "create_user": false,
+            "make_superuser": false,
+            "groups": []
+        }
+    }
+]
