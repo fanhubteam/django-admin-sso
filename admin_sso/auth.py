@@ -1,5 +1,8 @@
 from django.contrib.auth import get_user_model
 from admin_sso.models import Assignment
+import logging
+
+logger = logging.getLogger(__name__)
 
 class DjangoSSOAuthBackend:
 
@@ -52,6 +55,7 @@ class DjangoSSOAuthBackend:
 
     def authenticate(self, request, **kwargs):
         sso_email = kwargs.pop('sso_email', None)
+        logger.info(f'Init admin authenticate for {sso_email}')
 
         assignment = Assignment.objects.for_email(sso_email)
         if assignment is None:
