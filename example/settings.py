@@ -1,5 +1,8 @@
 # Django settings for example project.
 import os.path
+import environ
+
+env = environ.Env()
 
 ROOT = os.path.dirname(os.path.realpath(__file__))
 
@@ -87,8 +90,8 @@ AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
 )
 
-DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID = "your client id here"
-DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET = "your client secret here"
+DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID = env.str('DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID', None)
+DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET = env.str('DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET', None)
 
 # these are the default values
 # they are only set here because unit tests rely on them
